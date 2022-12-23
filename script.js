@@ -39,14 +39,6 @@ function verifySubjects() {
   return listSubject;
 }
 
-// const namePerson = document.querySelector('#input-name').value;
-// const lastName = document.querySelector('#input-lastname').value;
-// const inputEmail = document.querySelector('#input-email').value;
-// const house = document.querySelector('#house').value;
-// const family = document.querySelector('input[name="family"]:checked').value;
-// const rateSelect = document.querySelector('input[name="rate"]:checked').value;
-// const textArea = document.querySelector('#textarea').value;
-
 function fillForm() {
   const newObject = {
     nome: document.querySelector('#input-name').value,
