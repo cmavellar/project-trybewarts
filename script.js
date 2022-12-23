@@ -1,7 +1,6 @@
 const loginEmail = document.getElementById('email');
 const loginSenha = document.getElementById('senha');
 const check = document.getElementById('agreement');
-const buttonEnviar = document.getElementById('submit-btn');
 const submitBtnForm = document.querySelector('#submit-btn');
 const evaluationForm = document.getElementById('evaluation-form');
 const newLabel = document.createElement('p');
@@ -16,20 +15,20 @@ function login() {
 }
 document.getElementById('entrar').addEventListener('click', login);
 
-buttonEnviar.disabled = true;
+submitBtnForm.disabled = true;
 function enableButton() {
   if (check.checked) {
-    buttonEnviar.disabled = false;
+    submitBtnForm.disabled = false;
   }
 }
 check.addEventListener('click', enableButton);
 
-function contaCaracteres() {
+function countCharacters() {
   const contador = document.getElementById('counter');
   const textArea = document.getElementById('textarea');
   contador.innerText = `${500 - textArea.value.length}`;
 }
-document.getElementById('textarea').addEventListener('input', contaCaracteres);
+document.getElementById('textarea').addEventListener('input', countCharacters);
 
 function verifySubjects() {
   const checkedGrades = document.querySelectorAll('input[class="subject"]:checked');
@@ -51,7 +50,7 @@ function fillForm() {
     textArea: document.querySelector('#textarea').value,
   };
   evaluationForm.textContent = ' ';
-  newLabel.innerText = `Nome: ${newObject.nome}${newObject.lastName} Email: ${newObject.inputEmail},
+  newLabel.innerText = `Nome: ${newObject.nome} ${newObject.lastName}Email: ${newObject.inputEmail},
   Casa: ${newObject.house}
   Família: ${newObject.family}
   Matérias: ${newObject.fullListSubject}
