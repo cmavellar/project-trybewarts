@@ -59,7 +59,7 @@ function fillForm() {
     textArea: document.querySelector('#textarea').value,
   };
   evaluationForm.textContent = ' ';
-  newLabel.innerText = `Nome: ${newObject.nome} ${newObject.lastName}Email: ${newObject.inputEmail},
+  newLabel.innerText = `Nome: ${newObject.nome}${newObject.lastName} Email: ${newObject.inputEmail},
   Casa: ${newObject.house}
   Família: ${newObject.family}
   Matérias: ${newObject.fullListSubject}
@@ -70,9 +70,14 @@ function fillForm() {
 
 submitBtnForm.addEventListener('click', fillForm);
 
+function handleButton(event) {
+  event.preventDefault();
+}
+submitBtnForm.addEventListener('click', handleButton);
+
 // Referência https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input/checkbox
 // Habilitar o botão entrar
 // Referência https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp
 
-// função que conta o números de caracteres no textarea
+// Função que conta o número de caracteres no textarea
 // Referência - Contador de caracteres em uma textarea com JavaScript: https://www.youtube.com/watch?v=X-LVkU95jLU&ab_channel=dcode
