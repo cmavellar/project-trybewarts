@@ -2,6 +2,10 @@ const loginEmail = document.getElementById('email');
 const loginSenha = document.getElementById('senha');
 const check = document.getElementById('agreement');
 const buttonEnviar = document.getElementById('submit-btn');
+const submitBtnForm = document.querySelector('#submit-btn');
+const evaluationForm = document.getElementById('evaluation-form');
+const newLabel = document.createElement('p');
+const listSubject = [];
 
 function login() {
   if (loginEmail.value === 'tryber@teste.com' && loginSenha.value === '123456') {
@@ -12,10 +16,6 @@ function login() {
 }
 document.getElementById('entrar').addEventListener('click', login);
 
-// Verificar se a checkbox do requisito 16 está selecionada
-// referência https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input/checkbox
-// Habilitar o botão entrar
-// referência https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp
 buttonEnviar.disabled = true;
 function enableButton() {
   if (check.checked) {
@@ -24,12 +24,55 @@ function enableButton() {
 }
 check.addEventListener('click', enableButton);
 
-// função que conta o números de caracteres no textarea
-// Referência - Contador de caracteres em uma textarea com JavaScript: https://www.youtube.com/watch?v=X-LVkU95jLU&ab_channel=dcode
-
 function contaCaracteres() {
   const contador = document.getElementById('counter');
   const textArea = document.getElementById('textarea');
   contador.innerText = `${500 - textArea.value.length}`;
 }
 document.getElementById('textarea').addEventListener('input', contaCaracteres);
+
+function verifySubjects() {
+  const checkedGrades = document.querySelectorAll('input[class="subject"]:checked');
+  for (let index = 0; index < checkedGrades.length; index += 1) {
+    listSubject.push(` ${checkedGrades[index].value}`);
+  }
+  return listSubject;
+}
+
+// const namePerson = document.querySelector('#input-name').value;
+// const lastName = document.querySelector('#input-lastname').value;
+// const inputEmail = document.querySelector('#input-email').value;
+// const house = document.querySelector('#house').value;
+// const family = document.querySelector('input[name="family"]:checked').value;
+// const rateSelect = document.querySelector('input[name="rate"]:checked').value;
+// const textArea = document.querySelector('#textarea').value;
+
+function fillForm() {
+  const newObject = {
+    nome: document.querySelector('#input-name').value,
+    lastName: document.querySelector('#input-lastname').value,
+    inputEmail: document.querySelector('#input-email').value,
+    house: document.querySelector('#house').value,
+    family: document.querySelector('input[name="family"]:checked').value,
+    fullListSubject: verifySubjects(),
+    rateSelect: document.querySelector('input[name="rate"]:checked').value,
+    textArea: document.querySelector('#textarea').value,
+  };
+  evaluationForm.textContent = ' ';
+  newLabel.innerText = `Nome: ${newObject.nome} ${newObject.lastName}Email: ${newObject.inputEmail},
+  Casa: ${newObject.house}
+  Família: ${newObject.family}
+  Matérias: ${newObject.fullListSubject}
+  Avaliação: ${newObject.rateSelect}
+  Observações: ${newObject.textArea}`;
+  evaluationForm.appendChild(newLabel);
+}
+
+submitBtnForm.addEventListener('click', fillForm);
+
+// Referência https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input/checkbox
+// Habilitar o botão entrar
+// Referência https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp
+
+// função que conta o números de caracteres no textarea
+// Referência - Contador de caracteres em uma textarea com JavaScript: https://www.youtube.com/watch?v=X-LVkU95jLU&ab_channel=dcode
